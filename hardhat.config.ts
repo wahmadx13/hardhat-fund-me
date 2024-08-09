@@ -1,18 +1,10 @@
-import "@typechain/hardhat"
-import "@nomiclabs/hardhat-waffle"
-import "@nomiclabs/hardhat-etherscan"
-import "@nomiclabs/hardhat-ethers"
-import "hardhat-gas-reporter"
-import "dotenv/config"
-import "hardhat-deploy"
-import "solidity-coverage"
 import { HardhatUserConfig } from "hardhat/config"
-
-// You need to export an object to set up your config
-// Go to https://hardhat.org/config/ to learn more
-/**
- * @type import('hardhat/config').HardhatUserConfig
- */
+import "@nomicfoundation/hardhat-toolbox"
+import "@nomicfoundation/hardhat-verify"
+import "dotenv/config"
+import "hardhat-gas-reporter"
+import "solidity-coverage"
+import "hardhat-deploy"
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL || "https://eth-sepolia"
 const PRIVATE_KEY = process.env.PRIVATE_KEY || "0xkey"
@@ -42,9 +34,9 @@ const config: HardhatUserConfig = {
       },
     ],
   },
-  // etherscan: {
-  //   apiKey: ETHERSCAN_API_KEY
-  // },
+  etherscan: {
+    apiKey: ETHERSCAN_API_KEY,
+  },
   gasReporter: {
     enabled: true,
     currency: "USD",
@@ -59,3 +51,5 @@ const config: HardhatUserConfig = {
     },
   },
 }
+
+export default config
